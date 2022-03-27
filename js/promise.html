@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p id="demo"></p>
+
+
+<script type="text/javascript">
+// function display()
+// {
+// 	document.getElementById('demo').innerHTML="hello"
+// }
+// function cal(display)
+// {
+// 	display();
+// 	document.getElementById('demo').innerHTML="hello world"
+
+// }
+// cal(display);
+let w;
+if(typeof(w)==undefined)
+{
+	w=new Worker("fun()")
+}
+w.onmessage=function(event)
+{
+	document.getElementById('demo').innerHTML=event.data;
+}
+
+function fun()
+{
+	let i=0;
+	function timecount()
+	{
+		i++;
+		postMessage(i);
+		setTimeout("timecount()",500)
+	}
+}
+
+
+</script>
+</body>
+</html>
